@@ -1,0 +1,54 @@
+version: 2
+registries:
+  maven-repository-maven-jetbrains-space-comroid-snapshot:
+    type: maven-repository
+    url: https://maven.jetbrains.space/comroid/snapshot
+    username: Anonymous.User
+    password: "${{secrets.MAVEN_REPOSITORY_MAVEN_JETBRAINS_SPACE_COMROID_SNAPSHOT_PASSWORD}}"
+  maven-repository-maven-jetbrains-space-comroid-release:
+    type: maven-repository
+    url: https://maven.jetbrains.space/comroid/release
+    username: Anonymous.User
+    password: "${{secrets.MAVEN_REPOSITORY_MAVEN_JETBRAINS_SPACE_COMROID_RELEASE_PASSWORD}}"
+  maven-repository-maven-jetbrains-space-comroid-repo:
+    type: maven-repository
+    url: https://maven.jetbrains.space/comroid/repo
+    username: Anonymous.User
+    password: "${{secrets.MAVEN_REPOSITORY_MAVEN_JETBRAINS_SPACE_COMROID_REPO_PASSWORD}}"
+
+updates:
+- package-ecosystem: gradle
+  directory: "/status/java"
+  schedule:
+    interval: daily
+    time: "00:00"
+    timezone: Europe/Berlin
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: junit:junit
+    versions:
+    - 4.13.1
+    - 4.13.2
+  - dependency-name: org.apache.logging.log4j:log4j-api
+    versions:
+    - 2.14.0
+  - dependency-name: org.apache.logging.log4j:log4j-core
+    versions:
+    - 2.14.0
+  - dependency-name: com.squareup.okhttp3:okhttp
+    versions:
+    - 4.9.0
+    - 4.9.1
+  - dependency-name: org.jetbrains:annotations
+    versions:
+    - 20.1.0
+  - dependency-name: com.alibaba:fastjson
+    versions:
+    - 1.2.75
+  - dependency-name: org.javacord:javacord
+    versions:
+    - v3.1.2
+  registries:
+  - maven-repository-maven-jetbrains-space-comroid-snapshot
+  - maven-repository-maven-jetbrains-space-comroid-release
+  - maven-repository-maven-jetbrains-space-comroid-repo
